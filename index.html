@@ -359,8 +359,9 @@ footer span{font-family:var(--mono);font-size:11px;color:var(--text-tertiary)}
   .mesh-bg .orb{animation:none}
 }
 
-/* Page-break markers — hidden on screen */
+/* Page-break markers & print QR — hidden on screen */
 .print-page-break{display:none}
+.print-qr{display:none}
 
 /* ═══ PRINT ═══ */
 @media print{
@@ -386,8 +387,11 @@ footer span{font-family:var(--mono);font-size:11px;color:var(--text-tertiary)}
   /* ── Glow dividers — hide ── */
   .glow-divider{display:none!important}
 
+  /* ── QR code — top-left of first page ── */
+  .print-qr{display:block!important;position:absolute!important;top:12px!important;left:12px!important;width:70px!important;height:70px!important;z-index:10!important;border-radius:6px!important;background:#fff!important;padding:4px!important}
+
   /* ── Hero ── */
-  .hero{min-height:auto!important;padding:40px 24px 20px!important;background:#0a0e1a!important}
+  .hero{min-height:auto!important;padding:40px 24px 20px!important;background:#0a0e1a!important;position:relative!important}
   .hero-content{max-width:100%!important}
   .hero-badge{background:#101830!important;border:1px solid rgba(74,173,219,0.12)!important;color:var(--sky)!important;backdrop-filter:none!important}
   .hero-name{color:var(--text)!important;font-size:clamp(42px,10vw,72px)!important}
@@ -578,6 +582,7 @@ footer span{font-family:var(--mono);font-size:11px;color:var(--text-tertiary)}
 <!-- HERO -->
 <section class="hero" id="hero">
   <canvas id="heroCanvas"></canvas>
+  <img class="print-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wadhah-portfolio.vercel.app/" alt="Scan to visit portfolio">
   <div class="hero-content">
     <div class="hero-badge gs-reveal"><i class="fas fa-shield-halved"></i> Cybersecurity Engineer</div>
     <h1 class="hero-name gs-reveal">
